@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% filter default:0|add:' -' %}{% block title_page %}{% endblock title_page %}{% endfilter %} CRUD</title>
+    {% load render_bundle from webpack_loader %}
+    {% render_bundle 'main' %}
+</head>
+
+<body>
+    {% csrf_token %}
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <button class="btn navbar-brand">Tasks</button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#NavegacionTasks" aria-controls="NavegacionTasks" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="NavegacionTasks">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'tasks:Tasks'%}">Listado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tasks:ListTasksCompleted'%}">Tareas completadas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tasks:CreateTask'%}">Crear tarea</a>
+                        </li>
+                        <li class="nav-item d-flex">
+                            <a class="nav-link btn" @click="Sign.Out()">Cerrar sesión</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tasks:SignUp'%}">Regístrate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tasks:Login'%}">Ingresa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'tasks:Index'%}">Inicio</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}{% endblock content %}
+</body>
+
+</html>

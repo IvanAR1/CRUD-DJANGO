@@ -1,0 +1,21 @@
+
+
+{% extends 'base.html' %}
+{% block title_page %}Actualizar tarea{% endblock title_page %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-7 offset-md-3">
+            <form @submit.prevent="Tasks.Update({{task_id}})"  class="card card-body mt-5">
+                <h1 class="text-center">Actualizar tarea</h1>
+                {{ form.as_p }}
+                <div class="d-flex flex-row justify-content-between">
+                    <button class="btn btn-outline-dark" type="submit">Actualizar tarea</button>
+                    <button @click="Tasks.Completed({{task_id}})" class="btn btn-outline-info">Completar tarea</button>
+                    <button @click="Tasks.Delete({{task_id}})" class="btn btn-outline-danger">Eliminar tarea</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock content %}

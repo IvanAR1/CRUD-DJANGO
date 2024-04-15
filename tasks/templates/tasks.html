@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title_page %}Tasks{% endblock title_page %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 table-responsive">
+            <h1 class="text-center">Página de tareas pendientes</h1>
+            <table class="table table-dark table-striped table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Importancia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr class="text-center hover-overlay shadow-1-strong clickable-row" 
+                            data-href="{% url 'tasks:EditTask' task_id=task.id %}">
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.description }}</td>
+                            <td>{% if task.important %}❗{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+{% endblock content %}

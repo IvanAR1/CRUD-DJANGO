@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title_page %}Crear tarea{% endblock title_page %}
+{% block content %}
+    <main class="container py-5">
+        <section class="card card-body">
+            <h1 class="display-1 text-center">CRUD App</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorem voluptatum maiores modi distinctio sapiente quae eaque reprehenderit eveniet perferendis dolore quis aliquam asperiores, placeat eum recusandae voluptates. Quidem, adipisci possimus quaerat reiciendis aliquam soluta asperiores atque eius debitis harum culpa optio excepturi voluptatum doloremque dignissimos omnis voluptas quisquam iste.</p>
+            <div class="text-center">
+                <a href="{% url 'tasks:Login'%}" class="btn btn-secondary">
+                    Ingresa
+                </a>
+                <a href="{% url 'tasks:SignUp'%}" class="btn btn-dark">
+                    Regístrate
+                </a>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

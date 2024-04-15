@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title_page %}Crear tarea{% endblock title_page %}
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <form @submit.prevent="Tasks.Create()"  class="card card-body mt-5">
+                <h1 class="text-center">Crear tarea</h1>
+                {{ form.as_p }}
+                <button class="btn btn-outline-dark" type="submit">Crear tarea</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock content %}
